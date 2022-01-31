@@ -1,5 +1,6 @@
 let express = require('express');
 let path = require('path');
+let constants = require('./constants/constants')
 let wordService = require('./word');
 
 let app = express();
@@ -16,4 +17,6 @@ app.post("/dictionary", express.json(), (req, res) => {
     wordService.getWords(req, res);
 });
 
-app.listen(8000);
+app.listen(constants.PORT, () => {
+    console.log('--- Server Running at port : ' + constants.PORT)
+});

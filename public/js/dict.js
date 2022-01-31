@@ -1,10 +1,15 @@
 $(document).ready(function () {
     $('#lookup-btn').click(function () {
+        $('#meaning-section').html("");
+        $('#loading-image').show();
         let searchedWord = $('#word').val();
         console.log(searchedWord);
         $.post('http://localhost:8000/dictionary', {word: searchedWord})
             .done(displayMeanings)
-            .fail(handleError);
+            .fail(handleError)
+            .always(function (){
+                $('#loading-image').hide();
+            });
     })
 });
 
