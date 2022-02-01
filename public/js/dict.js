@@ -1,17 +1,18 @@
+const API_URL = 'http://localhost:8000/dictionary';
+
 $(document).ready(function () {
-    $('#lookup-btn').click(function () {
-        $('#meaning-section').html("");
-        $('#loading-image').show();
-        let searchedWord = $('#word').val();
-        console.log(searchedWord);
-        $.post('http://localhost:8000/dictionary', {word: searchedWord})
-            .done(displayMeanings)
-            .fail(handleError)
-            .always(function (){
-                $('#loading-image').hide();
-            });
-    })
+    $('#lookup-btn').click(lookUpButtonHandler);
 });
+
+function lookUpButtonHandler() {
+    $('#meaning-section').html("");
+    $('#loading-image').show();
+    let searchedWord = $('#word').val();
+    $.post(API_URL, {word: searchedWord})
+        .done(displayMeanings)
+        .fail(handleError)
+        .always(hideLoaders);
+}
 
 function displayMeanings(data) {
     let final = "";
@@ -23,4 +24,7 @@ function displayMeanings(data) {
 
 function handleError(err) {
     console.log(err);
+}
+function hideLoaders() {
+    $('#loading-image').hide();
 }
