@@ -10,7 +10,6 @@ function getWords(req, res) {
         options: {trustServerCertificate: true}
     });
     let searchedWord = req.body.word;
-
     //2 sec delay for demonstrating ajax user feed back [ no needed ]
     setTimeout(function () {
         conn.connect(function (err) {
