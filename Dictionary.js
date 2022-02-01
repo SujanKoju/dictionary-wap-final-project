@@ -18,5 +18,5 @@ app.post("/dictionary", express.json(), (req, res) => {
 });
 
 app.listen(constants.PORT, () => {
-    console.log('--- Server Running at port : ' + constants.PORT)
+    console.log('--- Server Running at port : ' + constants.PORT+" ---")
 });

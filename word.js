@@ -11,16 +11,16 @@ function getWords(req, res) {
     });
     let searchedWord = req.body.word;
 
+    //2 sec delay for demonstrating ajax user feed back [ no needed ]
     setTimeout(function () {
         conn.connect(function (err) {
             if (err) throw err;
-            console.log(' -- DB Connected --');
             conn.query("SELECT * FROM entries WHERE word = " + mySql.escape(searchedWord), function (err, result) {
                 if (err) throw err;
                 res.send(result);
             });
         })
-    }, 3000);
+    }, 2000);
 
 }
 
