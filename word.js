@@ -19,7 +19,7 @@ function getWords(req, res) {
                 res.send(result);
             });
         })
-    }, 2000);
+    }, 500);
 
 }
 
